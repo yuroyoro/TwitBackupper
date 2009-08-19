@@ -24,7 +24,6 @@ object Sample {
         case 0  => None
         // XMLと、取得した中で最小のstatus idをTupleにして返す
         case _ =>
-          val maxId =
           XML.saveFull( "%s_user_timeline_%d.xml".format( twitterId, cnt ), xml, "UTF-8", false, null)
           getUserTimeline( (xml \\ "status" \ "id" last).text.toLong , cnt + 1)
       }
