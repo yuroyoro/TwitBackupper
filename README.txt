@@ -1,8 +1,12 @@
 Backup tool for twitter statuses. It's written by scala.
 
+Required:
+ JDK 6
+ manen 2.0.9 or later
+
 How to use:
 $ git clone git://github.com/yuroyoro/TwitBackupper.git
-$ mnv scala:run -DaddArgs="-i|<your twitter id>"
+$ mvn scala:run -DaddArgs="-i|<your twitter id>"
 
 usage: Twitter backuuper
  -count <arg>                  count per file.max 200.default 200.
