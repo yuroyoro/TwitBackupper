@@ -7,7 +7,7 @@ object Sample {
 
   def main( args:Array[String] ):Unit= {
     val twitterId = args.first
-    lazy val userTimelineUrl  = "http://twitter.com/statuses/user_timeline/%s.xml?count=200".format( twitterId )
+    lazy val userTimelineUrl = "http://twitter.com/statuses/user_timeline/%s.xml?count=200".format( twitterId )
     def getUserTimeline( maxId:Long , cnt:Int):Unit = {
       // UserTimelineを取得する
       val url = userTimelineUrl + { if( maxId > 0 ) "&max_id=" + ( maxId - 1 ) else ""}
