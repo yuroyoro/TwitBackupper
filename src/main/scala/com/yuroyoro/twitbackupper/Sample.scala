@@ -1,7 +1,7 @@
 package com.yuroyoro.twitbackupper
 
 import scala.xml._
-import java.net.{URL, HttpURLConnection,URLEncoder}
+import scala.io.Source
 
 object Sample {
 
@@ -11,14 +11,11 @@ object Sample {
     def getUserTimeline( maxId:Long , cnt:Int):Unit = {
       // UserTimelineを取得する
       val url = userTimelineUrl + { if( maxId > 0 ) "&max_id=" + ( maxId - 1 ) else ""}
-
       println( url )
-      val urlConn = new URL(url).openConnection.asInstanceOf[HttpURLConnection]
-      urlConn.connect
-      urlConn.getResponseCode
+      val source = Source.fromURL( url )
 
       // XML取得
-      val xml = XML.load(urlConn.getInputStream)
+      val xml = XML.loadString( source.getLines.mkString )
       xml \\ "status" size match {
         // statusが取れなくなったら終了
         case 0  => None
